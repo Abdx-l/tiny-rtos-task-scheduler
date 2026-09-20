@@ -6,5 +6,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: cc -DHOST_TEST -std=c11 -Wall -Wextra test.c scheduler.c -o scheduler_test && ./scheduler_test
-      - run: sudo apt-get update && sudo apt-get install -y gcc-arm-none-eabi
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends gcc-arm-none-eabi libnewlib-dev
       - run: arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -Wextra -c scheduler.c port.S
